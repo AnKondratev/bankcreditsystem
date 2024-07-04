@@ -1,0 +1,17 @@
+[
+  {
+    "fullName": "Alice Smith",
+    "passportSeriesNumber": "12345678",
+    "dateOfBirth": "1990-09-15",
+    "registrationAddress": "123 Main St",
+    "residentialAddress": "456 Elm St",
+    "phoneNumber": "555-1234",
+    "education": "Bachelor's Degree",
+    "maritalStatus": "Married",
+    "creditHistory": "Good",
+    "currentCredits": "None",
+    "assets": "Car, House",
+    "salaryLevel": 50000.0,
+    "yearsAtCurrentJob": 5
+  }
+]
