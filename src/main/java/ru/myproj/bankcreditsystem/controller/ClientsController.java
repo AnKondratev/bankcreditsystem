@@ -45,7 +45,7 @@ public class ClientsController {
     }
 
     public void start() {
-        startMenu.startMenu();
+        startMenu.getStartMenu();
     }
 }
 

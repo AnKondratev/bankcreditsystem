@@ -17,7 +17,7 @@ public class ConsoleClientAddition {
         this.actions = actions;
     }
 
-    public Client getNewClient() {
+    private Client newClient() {
         Scanner scanner = new Scanner(System.in);
         Client client = new Client();
 
@@ -25,7 +25,7 @@ public class ConsoleClientAddition {
         client.setPassportSeriesNumber(scanner.nextLine());
         if (actions.findByPassport(client.getPassportSeriesNumber()) != null) {
             System.out.println("Error! Passport number already exists. Please check input data.");
-            return getNewClient();
+            return newClient();
         }
 
         System.out.println("Enter client's full name:");
@@ -41,49 +41,47 @@ public class ConsoleClientAddition {
             finish = scanner.nextInt();
             scanner.nextLine();
 
-            switch (finish) {
-                case 1:
+            if (finish == 1) {
+                System.out.println("Enter registration address:");
+                client.setRegistrationAddress(scanner.nextLine());
 
-                    System.out.println("Enter registration address:");
-                    client.setRegistrationAddress(scanner.nextLine());
+                System.out.println("Enter residential address:");
+                client.setResidentialAddress(scanner.nextLine());
 
-                    System.out.println("Enter residential address:");
-                    client.setResidentialAddress(scanner.nextLine());
+                System.out.println("Enter phone number:");
+                client.setPhoneNumber(scanner.nextLine());
 
-                    System.out.println("Enter phone number:");
-                    client.setPhoneNumber(scanner.nextLine());
+                System.out.println("Enter education level:");
+                client.setEducation(scanner.nextLine());
 
-                    System.out.println("Enter education level:");
-                    client.setEducation(scanner.nextLine());
+                System.out.println("Enter marital status:");
+                client.setMaritalStatus(scanner.nextLine());
 
-                    System.out.println("Enter marital status:");
-                    client.setMaritalStatus(scanner.nextLine());
+                System.out.println("Enter credit history rating:");
+                client.setCreditHistory(scanner.nextLine());
 
-                    System.out.println("Enter credit history rating:");
-                    client.setCreditHistory(scanner.nextLine());
+                System.out.println("Enter current credits information:");
+                client.setCurrentCredits(scanner.nextLine());
 
-                    System.out.println("Enter current credits information:");
-                    client.setCurrentCredits(scanner.nextLine());
+                System.out.println("Enter assets information:");
+                client.setAssets(scanner.nextLine());
 
-                    System.out.println("Enter assets information:");
-                    client.setAssets(scanner.nextLine());
+                System.out.println("Enter salary level:");
+                client.setSalaryLevel(scanner.nextInt());
+                scanner.nextLine();
 
-                    System.out.println("Enter salary level:");
-                    client.setSalaryLevel(scanner.nextInt());
-                    scanner.nextLine();
-
-                    System.out.println("Enter years at current job:");
-                    client.setYearsAtCurrentJob(scanner.nextInt());
-                    scanner.nextLine();
-                    break;
-                case 0:
-                    break;
-                default:
-                    System.out.println("Invalid input. Please try again.");
+                System.out.println("Enter years at current job:");
+                client.setYearsAtCurrentJob(scanner.nextInt());
+                scanner.nextLine();
+                break;
             }
         } while (finish != 0);
 
         System.out.println("Client creation completed.");
         return client;
+    }
+
+    public Client getNewClient() {
+        return newClient();
     }
 }
