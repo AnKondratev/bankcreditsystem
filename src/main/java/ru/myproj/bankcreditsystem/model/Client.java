@@ -4,6 +4,7 @@ package ru.myproj.bankcreditsystem.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+
 import java.time.LocalDate;
 import java.time.Period;
 
@@ -37,23 +38,21 @@ public class Client {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Id: ").append(id).append("\n");
-        sb.append("Full Name: ").append(fullName != null ? fullName : "данные не заполнены").append("\n");
-        sb.append("Passport Series Number: ").append(passportSeriesNumber != null ? passportSeriesNumber : "данные не заполнены").append("\n");
-        sb.append("Date of Birth: ").append(dateOfBirth != null ? dateOfBirth : "данные не заполнены").append("\n");
-        sb.append("Age: ").append(age != 0 ? age : "данные не заполнены").append("\n");
-        sb.append("Registration Address: ").append(registrationAddress != null ? registrationAddress : "данные не заполнены").append("\n");
-        sb.append("Residential Address: ").append(residentialAddress != null ? residentialAddress : "данные не заполнены").append("\n");
-        sb.append("Phone Number: ").append(phoneNumber != null ? phoneNumber : "данные не заполнены").append("\n");
-        sb.append("Education: ").append(education != null ? education : "данные не заполнены").append("\n");
-        sb.append("Marital Status: ").append(maritalStatus != null ? maritalStatus : "данные не заполнены").append("\n");
-        sb.append("Credit History: ").append(creditHistory != null ? creditHistory : "данные не заполнены").append("\n");
-        sb.append("Current Credits: ").append(currentCredits != null ? currentCredits : "данные не заполнены").append("\n");
-        sb.append("Assets: ").append(assets != null ? assets : "данные не заполнены").append("\n");
-        sb.append("Salary Level: ").append(salaryLevel != 0 ? salaryLevel : "данные не заполнены").append("\n");
-        sb.append("Years at Current Job: ").append(yearsAtCurrentJob != 0 ? yearsAtCurrentJob : "данные не заполнены").append("\n");
 
-        return sb.toString();
+        return "Id: " + id + "\n" +
+                "Full Name: " + (fullName != null ? fullName : "данные не заполнены") + "\n" +
+                "Passport Series Number: " + (passportSeriesNumber != null ? passportSeriesNumber : "данные не заполнены") + "\n" +
+                "Date of Birth: " + (dateOfBirth != null ? dateOfBirth : "данные не заполнены") + "\n" +
+                "Age: " + (age != 0 ? age : "данные не заполнены") + "\n" +
+                "Registration Address: " + (registrationAddress != null ? registrationAddress : "данные не заполнены") + "\n" +
+                "Residential Address: " + (residentialAddress != null ? residentialAddress : "данные не заполнены") + "\n" +
+                "Phone Number: " + (phoneNumber != null ? phoneNumber : "данные не заполнены") + "\n" +
+                "Education: " + (education != null ? education : "данные не заполнены") + "\n" +
+                "Marital Status: " + (maritalStatus != null ? maritalStatus : "данные не заполнены") + "\n" +
+                "Credit History: " + (creditHistory != null ? creditHistory : "данные не заполнены") + "\n" +
+                "Current Credits: " + (currentCredits != null ? currentCredits : "данные не заполнены") + "\n" +
+                "Assets: " + (assets != null ? assets : "данные не заполнены") + "\n" +
+                "Salary Level: " + (salaryLevel != 0 ? salaryLevel : "данные не заполнены") + "\n" +
+                "Years at Current Job: " + (yearsAtCurrentJob != 0 ? yearsAtCurrentJob : "данные не заполнены") + "\n";
     }
 }

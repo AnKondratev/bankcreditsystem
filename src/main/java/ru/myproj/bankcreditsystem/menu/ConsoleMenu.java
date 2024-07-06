@@ -15,13 +15,15 @@ public class ConsoleMenu {
     private ConsoleClientAddition newClient;
 
     private void displayMenu() {
-        System.out.println("Menu:");
-        System.out.println("1. Add client");
-        System.out.println("2. View all clients");
-        System.out.println("3. Find client");
-        System.out.println("4. Update client");
-        System.out.println("5. Delete client");
-        System.out.println("0. Exit");
+        System.out.println("""
+                Menu:
+                1. Add client
+                2. View all clients
+                3. Find client
+                4. Update client
+                5. Delete client
+                0. Exit""");
+
     }
 
     private void startMenu() {
@@ -30,64 +32,76 @@ public class ConsoleMenu {
         while (true) {
             displayMenu();
             System.out.print("Choose an action: ");
-            try {
-                choice = scanner.nextInt();
 
-                switch (choice) {
+            choice = scanner.nextInt();
 
-                    case 1 -> {
-                        System.out.println("Selected: Add client");
-                        actions.saveClient(newClient.getNewClient());
-                    }
+            switch (choice) {
 
-                    case 2 -> {
+                case 1 -> {
+                    System.out.println("Selected: Add client");
+                    actions.saveClient(newClient.getNewClient(scanner));
+                }
+
+                case 2 -> {
+                    try {
                         System.out.println("Selected: View all clients");
-                        System.out.println("For proper viewing of all clients, use the database table!");
-                        System.out.println("If you want to display client data in the console, press 1");
-                        int secondChoice = scanner.nextInt();
-                        if (secondChoice == 1) {
-                            System.out.println(actions.findAllClients().toString());
-                        }
+                        System.out.println(actions.findAllClients().toString());
+                    } catch (Exception e) {
+                        handleException(e);
+                        scanner.nextLine();
                     }
+                }
 
-                    case 3 -> {
+                case 3 -> {
+                    try {
                         System.out.println("Selected: Find client by passport number");
                         System.out.println("Enter passport number: ");
                         scanner.nextLine();
                         System.out.println(actions.findByPassport(scanner.nextLine()));
+                    } catch (Exception e) {
+                        handleException(e);
+                        scanner.nextLine();
                     }
+                }
 
-                    case 4 -> {
+                case 4 -> {
+                    try {
                         System.out.println("Selected: Update client");
                         System.out.println("Enter passport number: ");
                         scanner.nextLine();
-                        actions.updateClient(actions.saveClient(newClient.getNewClient()));
+                        actions.updateClient(actions.saveClient(newClient.getNewClient(scanner)));
+                    } catch (Exception e) {
+                        handleException(e);
+                        scanner.nextLine();
                     }
+                }
 
-                    case 5 -> {
+                case 5 -> {
+                    try {
                         System.out.println("Selected: Delete client by passport number");
                         System.out.println("Enter passport number: ");
                         scanner.nextLine();
                         actions.deleteClient(scanner.nextLine());
+                    } catch (Exception e) {
+                        handleException(e);
+                        System.out.println("Please enter the correct format!");
+                        actions.deleteClient(scanner.nextLine());
                     }
-
-                    case 0 -> {
-                        System.out.println("Exit");
-                        System.exit(0);
-                    }
-                    default -> System.out.println("Invalid choice, please try again.");
-
                 }
-            } catch (Exception e) {
-                handleException(e);
-                scanner.nextLine();
+
+                case 0 -> {
+                    System.out.println("Exit");
+                    System.exit(0);
+                }
+
+
             }
         }
     }
 
     @ExceptionHandler
     private void handleException(Exception e) {
-        System.out.println("Invalid input, try entering the menu item number.");
+        System.out.println("Please enter the correct format!");
     }
 
     public void getStartMenu() {

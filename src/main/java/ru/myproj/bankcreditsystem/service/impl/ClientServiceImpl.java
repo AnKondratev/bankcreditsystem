@@ -1,6 +1,5 @@
 package ru.myproj.bankcreditsystem.service.impl;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Primary;
@@ -9,9 +8,6 @@ import ru.myproj.bankcreditsystem.model.Client;
 import ru.myproj.bankcreditsystem.repository.ClientRepository;
 import ru.myproj.bankcreditsystem.service.ClientService;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -20,6 +16,7 @@ import java.util.List;
 public class ClientServiceImpl implements ClientService {
 
     private final ClientRepository repository;
+
 
     @Override
     public List<Client> findAllClients() {
@@ -47,14 +44,4 @@ public class ClientServiceImpl implements ClientService {
         repository.deleteByPassportSeriesNumber(passport);
     }
 
-    @Transactional
-    public void saveClientsFromJsonFile(File file) {
-        ObjectMapper objectMapper = new ObjectMapper();
-        try {
-            Client[] clients = objectMapper.readValue(file, Client[].class);
-            repository.saveAll(Arrays.asList(clients));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 }
